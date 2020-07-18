@@ -1,8 +1,9 @@
 ﻿using CourseLibrary.API.DbContexts;
-using CourseLibrary.API.Entities; 
+using CourseLibrary.API.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using VP.CourseLibrary.API.ResourceParameters;
 
 namespace CourseLibrary.API.Services
 {
@@ -122,23 +123,23 @@ namespace CourseLibrary.API.Services
             return _context.Authors.ToList<Author>();
         }
 
-        public IEnumerable<Author> GetAuthors(string mainCategory, string searchQuery)
+        public IEnumerable<Author> GetAuthors(AuthorsResourceParameters authorsParameters)
         {
-            if (string.IsNullOrWhiteSpace(mainCategory) && string.IsNullOrWhiteSpace(searchQuery))
+            if (string.IsNullOrWhiteSpace(authorsParameters.MainCategory) && string.IsNullOrWhiteSpace(authorsParameters.SearchQuery))
                 return GetAuthors();
 
             //deferred execution
             var authorQueryable = _context.Authors as IQueryable<Author>;
 
-            if (string.IsNullOrWhiteSpace(mainCategory) == false)
+            if (string.IsNullOrWhiteSpace(authorsParameters.MainCategory) == false)
             {
-                mainCategory = mainCategory.Trim();
+                var mainCategory = authorsParameters.MainCategory.Trim();
                 return authorQueryable.Where(x => x.MainCategory == mainCategory);
             }
 
-            if (string.IsNullOrWhiteSpace(searchQuery) == false)
+            if (string.IsNullOrWhiteSpace(authorsParameters.SearchQuery) == false)
             {
-                searchQuery = searchQuery.Trim();
+                var searchQuery = authorsParameters.SearchQuery.Trim();
                 return authorQueryable
                     .Where(x => x.MainCategory.Contains(searchQuery)
                         || x.FirstName.Contains(searchQuery)

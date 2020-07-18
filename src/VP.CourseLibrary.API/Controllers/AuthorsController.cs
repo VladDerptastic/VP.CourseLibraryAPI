@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using VP.CourseLibrary.API.DtoModels;
+using VP.CourseLibrary.API.ResourceParameters;
 
 namespace VP.CourseLibrary.API.Controllers
 {
@@ -22,9 +23,9 @@ namespace VP.CourseLibrary.API.Controllers
 
         [HttpGet()]
         [HttpHead]
-        public ActionResult<IEnumerable<AuthorDto>> GetAuthors(string mainCategory, string searchQuery)
+        public ActionResult<IEnumerable<AuthorDto>> GetAuthors([FromQuery]AuthorsResourceParameters authorsParameters)
         {
-            var efAuthors = _courseLibraryRepository.GetAuthors(mainCategory, searchQuery);
+            var efAuthors = _courseLibraryRepository.GetAuthors(authorsParameters);
 
             //return JsonResult(authors);
             //Don't use NotFound codes => if we connect to this method, we're getting an existing resource on the DB even if its empty table
