@@ -21,6 +21,7 @@ namespace VP.CourseLibrary.API.Controllers
         }
 
         [HttpGet()]
+        [HttpHead]
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors()
         {
             var efAuthors = _courseLibraryRepository.GetAuthors();
