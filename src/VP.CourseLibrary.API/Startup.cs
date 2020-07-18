@@ -1,3 +1,4 @@
+using AutoMapper;
 using CourseLibrary.API.DbContexts;
 using CourseLibrary.API.Services;
 using Microsoft.AspNetCore.Builder;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace CourseLibrary.API
 {
@@ -26,6 +28,7 @@ namespace CourseLibrary.API
             //    options.ReturnHttpNotAcceptable = true;
             //});
             services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             //TODO: ReturnHttpNotAcceptable Not working - fix. (Content Negotiation)
             //.AddMvcOptions(setupAction =>
