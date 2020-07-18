@@ -22,9 +22,9 @@ namespace VP.CourseLibrary.API.Controllers
 
         [HttpGet()]
         [HttpHead]
-        public ActionResult<IEnumerable<AuthorDto>> GetAuthors()
+        public ActionResult<IEnumerable<AuthorDto>> GetAuthors(string mainCategory, string searchQuery)
         {
-            var efAuthors = _courseLibraryRepository.GetAuthors();
+            var efAuthors = _courseLibraryRepository.GetAuthors(mainCategory, searchQuery);
 
             //return JsonResult(authors);
             //Don't use NotFound codes => if we connect to this method, we're getting an existing resource on the DB even if its empty table
