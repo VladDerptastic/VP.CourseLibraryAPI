@@ -9,6 +9,7 @@ namespace VP.CourseLibrary.API.Profiles
         public CoursesProfile()
         {
             CreateMap<Course, CourseDto>();
+            CreateMap<CourseForCreationDto, Course>();
         }
     }
 }
