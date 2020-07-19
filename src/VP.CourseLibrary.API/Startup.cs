@@ -24,19 +24,13 @@ namespace CourseLibrary.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvcCore(options => 
-            //{
-            //    options.ReturnHttpNotAcceptable = true;
-            //});
-            services.AddControllers();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddControllers(setupAction =>
+            {
+                //TODO: ReturnHttpNotAcceptable Not working - fix. (Content Negotiation)
+                setupAction.ReturnHttpNotAcceptable = true; //if unsupported response type is requested (false by default)
+            }).AddXmlDataContractSerializerFormatters(); 
 
-            //TODO: ReturnHttpNotAcceptable Not working - fix. (Content Negotiation)
-            //.AddMvcOptions(setupAction =>
-            //{
-            //    setupAction.ReturnHttpNotAcceptable = true; //if unsupported response type is requested (false by default)
-            //});
-            //.AddXmlDataContractSerializerFormatters();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
