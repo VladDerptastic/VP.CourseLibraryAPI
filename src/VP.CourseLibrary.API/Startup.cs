@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 using System;
 
 namespace CourseLibrary.API
@@ -31,6 +32,11 @@ namespace CourseLibrary.API
             {
                 //TODO: ReturnHttpNotAcceptable Not working - fix. (Content Negotiation)
                 setupAction.ReturnHttpNotAcceptable = true; //if unsupported response type is requested (false by default)
+            })
+            .AddNewtonsoftJson(setupAction =>
+            {
+                setupAction.SerializerSettings.ContractResolver
+                    = new CamelCasePropertyNamesContractResolver();
             })
             .AddXmlDataContractSerializerFormatters()
             //making the API comply with https://tools.ietf.org/html/rfc7807
