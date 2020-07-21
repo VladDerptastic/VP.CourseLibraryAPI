@@ -98,7 +98,8 @@ namespace VP.CourseLibrary.API.Controllers
             _courseLibraryRepository.UpdateCourse(existingCourse);
             _courseLibraryRepository.Save();
 
-            return NoContent(); //or Ok() with object representation, both are valid
+            //consider if we don't want to return 200 ok with the updated resource in the body
+            return NoContent();
         }
 
         [HttpPatch("{courseId}")]
@@ -149,6 +150,23 @@ namespace VP.CourseLibrary.API.Controllers
             //map back to an entity that can be saved by our repository (while also applying the updates)
             _mapper.Map(courseToPatch, courseFromRepo);
             _courseLibraryRepository.UpdateCourse(courseFromRepo);
+            _courseLibraryRepository.Save();
+
+            //consider if we don't want to return 200 ok with the updated resource in the body
+            return NoContent();
+        }
+
+        [HttpDelete("{courseId}")]
+        public ActionResult DeleteCourseForAuthor(Guid authorId, Guid courseId)
+        {
+            if (_courseLibraryRepository.AuthorExists(authorId) == false)
+                return NotFound();
+            var courseFromRepo = _courseLibraryRepository.GetCourse(authorId, courseId);
+
+            if (courseFromRepo == null)
+                return NotFound();
+
+            _courseLibraryRepository.DeleteCourse(courseFromRepo);
             _courseLibraryRepository.Save();
 
             return NoContent();

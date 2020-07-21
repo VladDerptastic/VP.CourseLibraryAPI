@@ -34,7 +34,7 @@ namespace VP.CourseLibrary.API.Controllers
             return Ok(_mapper.Map<IEnumerable<AuthorDto>>(efAuthors));
         }
 
-        [HttpGet("{authorId:guid}", Name = nameof(GetAuthor))] 
+        [HttpGet("{authorId:guid}", Name = nameof(GetAuthor))]
         //[HttpGet("{authorId:int}")] => if we had an int ID as well as a guid, we could use this on another method => Route Constraints
         public ActionResult<AuthorDto> GetAuthor(Guid authorId)
         {
@@ -59,7 +59,7 @@ namespace VP.CourseLibrary.API.Controllers
             //if the DB is down a 500 server error will be thrown (and a default message provided in middleware)
             _courseLibraryRepository.Save();
             var returnAuthorDto = _mapper.Map<AuthorDto>(authorEntity);
-            return CreatedAtRoute(nameof(GetAuthor), new { authorId = returnAuthorDto.Id}, returnAuthorDto);
+            return CreatedAtRoute(nameof(GetAuthor), new { authorId = returnAuthorDto.Id }, returnAuthorDto);
         }
 
         [HttpOptions]
@@ -69,6 +69,19 @@ namespace VP.CourseLibrary.API.Controllers
 
             //Successfull OPTIONS call should always result in a 200 OK even if empty
             return Ok();
+        }
+
+        [HttpDelete("{authorId}")]
+        public ActionResult DeleteAuthor(Guid authorId)
+        {
+            var author = _courseLibraryRepository.GetAuthor(authorId);
+
+            if (author == null)
+                return NotFound();
+
+            _courseLibraryRepository.DeleteAuthor(author);
+            _courseLibraryRepository.Save();
+            return NoContent();
         }
     }
 }
