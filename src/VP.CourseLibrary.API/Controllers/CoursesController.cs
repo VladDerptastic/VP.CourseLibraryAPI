@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CourseLibrary.API.Entities;
 using CourseLibrary.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -13,6 +14,7 @@ using VP.CourseLibrary.API.DtoModels;
 
 namespace VP.CourseLibrary.API.Controllers
 {
+    [Authorize] //can take a different scheme name as a parameter //can work also in Razor pages model classes
     [ApiController]
     [Route("api/authors/{authorId}/courses")]
     public class CoursesController : ControllerBase
@@ -26,6 +28,7 @@ namespace VP.CourseLibrary.API.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(courseLibraryRepository));
         }
 
+        [AllowAnonymous] //this allows un-authorized access for this method only
         [HttpGet]
         public ActionResult<IEnumerable<CourseDto>> GetCoursesForAuthor(Guid authorId)
         {
