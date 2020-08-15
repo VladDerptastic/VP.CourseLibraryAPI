@@ -1,0 +1,1421 @@
+{
+	"info": {
+		"_postman_id": "c1a0cb4b-0e30-441f-9e18-d91a662392ad",
+		"name": "VP.CourseLibrary",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Authors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors?Value=application/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					],
+					"query": [
+						{
+							"key": "Value",
+							"value": "application/json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Author",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35"
+					],
+					"query": [
+						{
+							"key": "Value",
+							"value": "application/json",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Author - Wrong authorId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b36",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b36"
+					]
+				},
+				"description": "Request made with an unexisting authorId - should fail with a 404 result object. "
+			},
+			"response": []
+		},
+		{
+			"name": "GET Courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Courses - Wrong authorId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b36/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b36",
+						"courses"
+					]
+				},
+				"description": "Request made with an unexisting authorId - should fail with a 404 result object. "
+			},
+			"response": []
+		},
+		{
+			"name": "GET Course",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Course - Wrong authorId; Correct courseId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b36/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b36",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				},
+				"description": "Request made with an unexisting authorId - should fail with a 404 result object. "
+			},
+			"response": []
+		},
+		{
+			"name": "GET Course - Wrong courseId; Correct authorId",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0d17dc77-bd6f-49d5-bf17-234e10b24960",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6c"
+					]
+				},
+				"description": "Request made with an unexisting courseId - should fail with a 404 result object. "
+			},
+			"response": []
+		},
+		{
+			"name": "HEAD Authors",
+			"request": {
+				"method": "HEAD",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors?Value=application/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					],
+					"query": [
+						{
+							"key": "Value",
+							"value": "application/json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Filtered Authors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors?mainCategory=rum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					],
+					"query": [
+						{
+							"key": "mainCategory",
+							"value": "rum"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Searched Authors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors?searchQuery=as",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					],
+					"query": [
+						{
+							"key": "searchQuery",
+							"value": "as"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Filtered and Searched Authors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors?mainCategory=rum&searchQuery=a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					],
+					"query": [
+						{
+							"key": "mainCategory",
+							"value": "rum"
+						},
+						{
+							"key": "searchQuery",
+							"value": "a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Jane\",\r\n    \"lastName\" : \"Suckers\",\r\n    \"dateOfBirth\" : \"1968-03-04T00:00:00\",\r\n    \"mainCategory\" : \"Booty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author - No request body",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					]
+				},
+				"description": "No JSON request payload.\r\nExpected outcome - 400 Bad Request."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author - Wrong dateOfBirth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Jane\",\r\n    \"lastName\" : \"Suckers\",\r\n    \"dateOfBirth\" : \"Nope\",\r\n    \"mainCategory\" : \"Booty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					]
+				},
+				"description": "Wrong JSON object formatting.\r\nExpected outcome - 400 Bad Request."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Course for Author",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"Top hits of the last decade\",\r\n    \"description\": \"Learn how to play the notes of the most famous tunes you've heard\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/102b566b-ba1f-404c-b2df-e2cde39ade09/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"102b566b-ba1f-404c-b2df-e2cde39ade09",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Course for Author - Wrong authorId",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"Top hits of the last decade\",\r\n    \"description\": \"Learn how to play the notes of the most famous tunes you've heard\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/102b566b-ba1f-404c-b2df-e2cde39ade10/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"102b566b-ba1f-404c-b2df-e2cde39ade10",
+						"courses"
+					]
+				},
+				"description": "Wrong authorId in the querry string.\r\nExpected result - 404 Not Found."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author with Courses",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Jane\",\r\n    \"lastName\" : \"Suckers\",\r\n    \"dateOfBirth\" : \"1968-03-04T00:00:00\",\r\n    \"mainCategory\" : \"Booty\",\r\n    \"courses\" : [\r\n        {\r\n            \"title\" : \"Drinking Games\",\r\n            \"description\" : \"Isn't it self explanatory?\"\r\n        },\r\n        {\r\n            \"title\" : \"Booty Degustation 101\",\r\n            \"description\" : \"How to spot, taste, and pick the perfect booty.\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Authors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n    \"firstName\" : \"Jane\",\r\n    \"lastName\" : \"Suckers\",\r\n    \"dateOfBirth\" : \"1968-03-04T00:00:00\",\r\n    \"mainCategory\" : \"Booty\"\r\n    },\r\n    {\r\n    \"firstName\" : \"Josh\",\r\n    \"lastName\" : \"Suckers\",\r\n    \"dateOfBirth\" : \"1994-03-04T00:00:00\",\r\n    \"mainCategory\" : \"Boooooooooooooty\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authorcollections",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authorcollections"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Authors with ID's",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authorcollections/(0d3d424c-6ac2-43d0-a868-2ff377b8e127,e5ea01dc-fa03-44c5-b328-18e6bcc5e052,5b3621c0-7b12-4e80-9c8b-3398cba7ee05)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authorcollections",
+						"(0d3d424c-6ac2-43d0-a868-2ff377b8e127,e5ea01dc-fa03-44c5-b328-18e6bcc5e052,5b3621c0-7b12-4e80-9c8b-3398cba7ee05)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author with ID ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Jane\",\r\n    \"lastName\" : \"Suckers\",\r\n    \"dateOfBirth\" : \"1968-03-04T00:00:00\",\r\n    \"mainCategory\" : \"Booty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35"
+					]
+				},
+				"description": "A post request but specifying an ID in the querry (existing or not)\r\nExpected result - 405 Not Allowed."
+			},
+			"response": []
+		},
+		{
+			"name": "OPTIONS Authors",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Authors - XML Input",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<AuthorForCreationDto xmlns:i=\"htttp://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/VP.CourseLibrary.API.DtoModels\">\r\n    <DateOfBirth xmlns:d3p1=\"http://schemas.datacontract.org/2004/07/System\">\r\n        <d3p1:DateTime>1968-03-03T00:00:00Z</d3p1:DateTime>\r\n        <d3p1:OffsetMinutes>0</d3p1:OffsetMinutes>\r\n    </DateOfBirth>\r\n    <FirstName>Jane</FirstName>\r\n    <LastName>Schockers</LastName>\r\n    <MainCategory>XML Booty</MainCategory>\r\n</AuthorForCreationDto> ",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Authors - XML Input; XML Output",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<AuthorForCreationDto xmlns:i=\"htttp://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/VP.CourseLibrary.API.DtoModels\">\r\n    <DateOfBirth xmlns:d3p1=\"http://schemas.datacontract.org/2004/07/System\">\r\n        <d3p1:DateTime>1968-03-03T00:00:00Z</d3p1:DateTime>\r\n        <d3p1:OffsetMinutes>0</d3p1:OffsetMinutes>\r\n    </DateOfBirth>\r\n    <FirstName>Jane</FirstName>\r\n    <LastName>Schockers</LastName>\r\n    <MainCategory>XML Booty</MainCategory>\r\n</AuthorForCreationDto> ",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author - Null values in body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : null,\r\n    \"description\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/102b566b-ba1f-404c-b2df-e2cde39ade09/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"102b566b-ba1f-404c-b2df-e2cde39ade09",
+						"courses"
+					]
+				},
+				"description": "Having correct JSON structure, but incorrect values.\r\nExpected result - 422 Unprocessable Entity and a validation response message."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Course for Author - Same title and description (validation error)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"A new course!\",\r\n    \"description\": \"A new course!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/102b566b-ba1f-404c-b2df-e2cde39ade09/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"102b566b-ba1f-404c-b2df-e2cde39ade09",
+						"courses"
+					]
+				},
+				"description": "A title being the same string as the description.\r\nExpected result - 422 Unprocessable Entity, together with a custom message within the 'errors' object."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Course for Author - Title too long; Description too long",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel purus velit. Sed porttitor sem nisl, at consectetur ante finibus consequat. Suspendisse ut tortor vel massa vulputate euismod. Aenean facilisis turpis at justo luctus, eget mattis nunc semper. Quisque consectetur hendrerit lobortis. Mauris tincidunt tempus ornare. Praesent mollis volutpat elit quis fringilla. Sed vitae urna vestibulum, eleifend ipsum ac, maximus felis. Aenean elementum rutrum odio, eu dignissim felis vestibulum sed. Nulla facilisi. Cras vulputate vel lacus nec mollis. Donec volutpat dictum erat ut imperdiet. Cras vitae ante eleifend, maximus eros at, blandit sapien. Nullam et pretium felis. Aliquam erat volutpat. Nam quis orci vitae dui luctus faucibus vitae sed purus. Proin est est, tincidunt id erat sed, suscipit sagittis nulla. Curabitur commodo nisl dictum efficitur venenatis. Morbi ut lobortis odio. Aenean sodales quis nisi et laoreet. Maecenas semper mollis commodo. Nam in malesuada enim. Proin imperdiet in erat sollicitudin tincidunt. Integer pharetra ac lacus eget maximus. Pellentesque aliquam sem quis augue sodales ornare. Nullam ut felis consequat turpis finibus interdum quis porta nulla. Mauris tincidunt diam ultrices tempus feugiat. In sapien lectus, consectetur sit amet porta ut, tempor vitae diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim sem eget vestibulum malesuada. Phasellus porttitor tincidunt tincidunt. Pellentesque quis dui justo cras amet.\",\r\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel purus velit. Sed porttitor sem nisl, at consectetur ante finibus consequat. Suspendisse ut tortor vel massa vulputate euismod. Aenean facilisis turpis at justo luctus, eget mattis nunc semper. Quisque consectetur hendrerit lobortis. Mauris tincidunt tempus ornare. Praesent mollis volutpat elit quis fringilla. Sed vitae urna vestibulum, eleifend ipsum ac, maximus felis. Aenean elementum rutrum odio, eu dignissim felis vestibulum sed. Nulla facilisi. Cras vulputate vel lacus nec mollis. Donec volutpat dictum erat ut imperdiet. Cras vitae ante eleifend, maximus eros at, blandit sapien. Nullam et pretium felis. Aliquam erat volutpat. Nam quis orci vitae dui luctus faucibus vitae sed purus. Proin est est, tincidunt id erat sed, suscipit sagittis nulla. Curabitur commodo nisl dictum efficitur venenatis. Morbi ut lobortis odio. Aenean sodales quis nisi et laoreet. Maecenas semper mollis commodo. Nam in malesuada enim. Proin imperdiet in erat sollicitudin tincidunt. Integer pharetra ac lacus eget maximus. Pellentesque aliquam sem quis augue sodales ornare. Nullam ut felis consequat turpis finibus interdum quis porta nulla. Mauris tincidunt diam ultrices tempus feugiat. In sapien lectus, consectetur sit amet porta ut, tempor vitae diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim sem eget vestibulum malesuada. Phasellus porttitor tincidunt tincidunt. Pellentesque quis dui justo cras amet.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/102b566b-ba1f-404c-b2df-e2cde39ade09/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"102b566b-ba1f-404c-b2df-e2cde39ade09",
+						"courses"
+					]
+				},
+				"description": "Note: Custom validation fires only if the already annotated validation passes, otherwise it doesn' bother. \r\nExpected result - 422 Unprocessable Entity with messages in 'errors' coming only from the annotated validation."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"Updated title!\",\r\n    \"description\": \"Updated description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author - Wrong id; Wrong authorId",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"Updated title! - Two id's\",\r\n    \"description\": \"Updated description - Two id's\",\r\n    \"id\" : \"d8663e5e-7494-4f81-8739-6e0de1bea7dd\",\r\n    \"authorId\" : \"c28888e9-2ba9-473a-a40f-e38cb54f9b35\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Should still return 204 No Content (or 200 OK) and should not update the ID's, since the update object in the background does not accept values for them from the body. "
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author - No description",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"Updated title!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Should return 204 No content (or OK), and the description should be null because its not included (and we update the whole object)"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author - Wrong authorId in querry",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"Updated title!\",\r\n    \"description\": \"Updated description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/c28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"c28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected result - 404 Not Found"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author - Wrong courseId",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"Updated title!\",\r\n    \"description\" : \"Updated description!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/c8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"c8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Wrong courseId in the querry string (but correct authorId).\r\nOLD Expected result - 404 Not Found\r\n\r\nUpserting has been implemented\r\nNEW Expected result - 201 Created the first time its ran (with a response of the resource)\r\n                    - 204 No Content the second time (simply updating)"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author - Null title; Too long description",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : null,\r\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel purus velit. Sed porttitor sem nisl, at consectetur ante finibus consequat. Suspendisse ut tortor vel massa vulputate euismod. Aenean facilisis turpis at justo luctus, eget mattis nunc semper. Quisque consectetur hendrerit lobortis. Mauris tincidunt tempus ornare. Praesent mollis volutpat elit quis fringilla. Sed vitae urna vestibulum, eleifend ipsum ac, maximus felis. Aenean elementum rutrum odio, eu dignissim felis vestibulum sed. Nulla facilisi. Cras vulputate vel lacus nec mollis. Donec volutpat dictum erat ut imperdiet. Cras vitae ante eleifend, maximus eros at, blandit sapien. Nullam et pretium felis. Aliquam erat volutpat. Nam quis orci vitae dui luctus faucibus vitae sed purus. Proin est est, tincidunt id erat sed, suscipit sagittis nulla. Curabitur commodo nisl dictum efficitur venenatis. Morbi ut lobortis odio. Aenean sodales quis nisi et laoreet. Maecenas semper mollis commodo. Nam in malesuada enim. Proin imperdiet in erat sollicitudin tincidunt. Integer pharetra ac lacus eget maximus. Pellentesque aliquam sem quis augue sodales ornare. Nullam ut felis consequat turpis finibus interdum quis porta nulla. Mauris tincidunt diam ultrices tempus feugiat. In sapien lectus, consectetur sit amet porta ut, tempor vitae diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim sem eget vestibulum malesuada. Phasellus porttitor tincidunt tincidunt. Pellentesque quis dui justo cras amet.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected result - 422 Unprocessable Entity and the validation messages from the base class triggered."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author - Null title; Null description",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : null,\r\n    \"description\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected outcome - 422 Unprocessable Entity with both messages triggered on title (coming from base class) and description (coming from overrided class)"
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Course for Author - Update title",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\": \"replace\",\r\n        \"path\": \"/title\",\r\n        \"value\": \"Patched title!\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Course for Author - Update title; Update description",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\": \"replace\",\r\n        \"path\": \"/title\",\r\n        \"value\": \"Patched title!\"\r\n    },\r\n    {\r\n        \"op\": \"replace\",\r\n        \"path\": \"/description\",\r\n        \"value\": \"Patched description!\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Course for Author - Remove description",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\": \"remove\",\r\n        \"path\": \"/description\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected result - 400 Bad Request (validation fail)"
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Course for Author - Add description; Copy description to title",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\": \"add\",\r\n        \"path\": \"/description\",\r\n        \"value\": \"Patched title NEW!\"\r\n    },\r\n    {\r\n        \"op\": \"copy\",\r\n        \"from\": \"/description\",\r\n        \"path\": \"/title\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected result - 400 Bad Request (validation fail)"
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Course for Author - Wrong authorId",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\": \"add\",\r\n        \"path\": \"/description\",\r\n        \"value\": \"Patched title NEW!\"\r\n    },\r\n    {\r\n        \"op\": \"copy\",\r\n        \"from\": \"/description\",\r\n        \"path\": \"/title\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/c28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"c28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected result - 404 Not Found"
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Course for Author - Wrong courseId",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\": \"add\",\r\n        \"path\": \"/description\",\r\n        \"value\": \"Patched title NEW!\"\r\n    },\r\n    {\r\n        \"op\": \"copy\",\r\n        \"from\": \"/description\",\r\n        \"path\": \"/title\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/c8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"c8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "OLD Expected result - 404 Not Found\r\nNEW Expected result - (With upsert + no validation) 201 Created\r\nNEW Expected result - (With upser + validation) 400 Bad Request"
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Course For Author - Remove an unexisting field",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\": \"remove\",\r\n        \"path\": \"/nonexisting\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected result - 400 Bad Request (with error details)\r\n\r\nExpected result from course - 422 Unprocessable Entity (can't seem to get that one)"
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Course for Author - Upserting; No title; No description; Wrong field path",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\": \"add\",\r\n        \"path\": \"/doesnotexist\",\r\n        \"value\": \"Value that will not be added!\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/c8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"c8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected result - 400 Bad Request + All validation triggered (for title, description, and wrong field)."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Course for Author",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Course for Author - Wrong authorId",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/c28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/d8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"c28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"d8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected result - 404 Not Found"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Course for Author - Wrong courseId",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/c8663e5e-7494-4f81-8739-6e0de1bea7ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"c8663e5e-7494-4f81-8739-6e0de1bea7ee"
+					]
+				},
+				"description": "Expected result - 404 Not Found"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Author",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51044/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51044",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35"
+					]
+				},
+				"description": "Expected Result - Courses getting deleted as well. "
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
