@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using System;
+using VP.CourseLibrary.API;
 using VP.CourseLibrary.API.Services;
 
 namespace CourseLibrary.API
@@ -98,9 +99,24 @@ namespace CourseLibrary.API
                     @"Server=(localdb)\mssqllocaldb;Database=CourseLibraryDB;Trusted_Connection=True;");
             });
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie();
+            services
+                .AddAuthentication(x => 
+                {
+                    x.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    //x.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+                })
+                .AddCookie() //"account/login" is the default path
+                .AddCookie(ExternalAuthenticationDefaults.AuthenticationScheme)
+                .AddGoogle(x => 
+                {
+                    //using "Manage Client Secrets" in VisualStudio, so we would not be checking them in source controll
+                    x.SignInScheme = ExternalAuthenticationDefaults.AuthenticationScheme;
+                    x.ClientId = Configuration["Google:ClientId"];
+                    x.ClientSecret = Configuration["Google:ClientSecret"];
+                });
             //.AddCookie(o => o.LoginPath = "account/signin"); if we don't like the default path
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -118,6 +134,8 @@ namespace CourseLibrary.API
                         await context.Response.WriteAsync("An unexpected fault happened. Try again later.");
                     });
                 });
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

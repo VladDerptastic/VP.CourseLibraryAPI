@@ -21,10 +21,16 @@ namespace VP.CourseLibrary.API.Services
                 GoogleId = "101517359495305583936"
             }
         };
+
         public UserDto GetByUsernameAndPassword(string username, string password)
         {
             var user = users.SingleOrDefault(u => u.Username == username && u.Password == password.AsSha256());
             return user;
+        }
+        public UserDto GetByGoogleId(string googleId)
+        {
+            //TODO: This is just to verify the rest of the logic is working
+            return users[0];
         }
     }
 }

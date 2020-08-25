@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using VP.CourseLibrary.API.DtoModels;
@@ -24,9 +26,52 @@ namespace VP.CourseLibrary.API.Controllers
 
         // GET: api/<AccountsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get(string returnUrl = "/authors")
         {
-            return new string[] { "value1", "value2" };
+            var props = new AuthenticationProperties
+            {
+                RedirectUri = Url.Action("GoogleLoginCallback"),
+                Items =
+                {
+                    { "returnUrl", returnUrl}
+                }
+            };
+            return Challenge(props, GoogleDefaults.AuthenticationScheme);
+        }
+
+        public async Task<IActionResult> GoogleLoginCallback() 
+        {
+            var result = await HttpContext.AuthenticateAsync(
+                ExternalAuthenticationDefaults.AuthenticationScheme);
+
+            var externalClaims = result.Principal.Claims.ToList();
+
+            var subjectIdClaim = externalClaims.FirstOrDefault(
+                x => x.Type == ClaimTypes.NameIdentifier);
+            var subjectValue = subjectIdClaim.Value;
+
+            var user = _userRepository.GetByGoogleId(subjectValue);
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.Role, user.Role.ToString()),
+                new Claim("GoogleID", user.GoogleId)
+            };
+
+            var identity = new ClaimsIdentity(claims,
+                CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            // delete temporary cookie used during google authentication
+            await HttpContext.SignOutAsync(
+                ExternalAuthenticationDefaults.AuthenticationScheme);
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+            return LocalRedirect(result.Properties.Items["returnUrl"]);
         }
 
         // GET api/<AccountsController>/5
@@ -56,9 +101,9 @@ namespace VP.CourseLibrary.API.Controllers
             var identity = new ClaimsIdentity(claims, authScheme);
             var principal = new ClaimsPrincipal(identity);
 
-            await HttpContext.SignInAsync(authScheme, principal, 
-                new AuthenticationProperties 
-                { 
+            await HttpContext.SignInAsync(authScheme, principal,
+                new AuthenticationProperties
+                {
                     //if we want the cookie to be session only, IsPersistent should remain false
                     IsPersistent = credentials.RememberMe,
                     ExpiresUtc = DateTime.UtcNow.AddDays(4)
